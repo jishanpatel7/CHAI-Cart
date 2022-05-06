@@ -36,6 +36,7 @@ let navigate = useNavigate();
       enqueueSnackbar("Payment Successful", { variant: "success" });
     }
   };
+ 
 
   const handleNum = (e) => {
     setCreditCardNum(e.target.rawValue);
@@ -115,7 +116,8 @@ let navigate = useNavigate();
             <img src={item.image} alt={item.title} className="cart-items-image" />
             </div>
             <div>
-            <button className="cart-items-add" onClick={() => handleAddProduct(item)}>Add</button>
+            <button className="cart-items-add" 
+            onClick={() => handleAddProduct(item)}>Add</button>
             <button className="cart-items-remove" onClick={() => handleRemoveProduct(item)}>Remove</button>
             </div>
           </div>
@@ -233,7 +235,7 @@ let navigate = useNavigate();
             <h4>
              Order
             </h4>
-            <p>${totalPrice-7.68}</p>
+            <p>${totalPrice.toFixed(2)}</p>
             </div>
             <div className="delivery">
           <h4>
@@ -248,7 +250,7 @@ let navigate = useNavigate();
               Summary
             </h4>
             <p>
-              ${totalPrice}
+              ${(totalPrice + 7.68).toFixed(2)}
             </p>
             </div>
             </div>
