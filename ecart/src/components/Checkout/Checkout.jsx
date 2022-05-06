@@ -139,7 +139,7 @@ let navigate = useNavigate();
       </div>
 
       <div className="payment-card">
-        <h2>Payment</h2>
+        <h3>Payment</h3>
         <button>
           <AddIcon />
           Add New Card
