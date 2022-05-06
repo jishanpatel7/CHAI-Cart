@@ -12,11 +12,21 @@ const Products = ({products, handleAddProduct}) => {
       variant: "info",
     });
   };
- 
-  const handleSort = ([...products]) => {
-    
 
+ 
+  const handleSort = (e) => {
+    const sortBy = e.target.value;
+    const sortedProducts = [...products];
+    console.log(sortedProducts);
+    sortedProducts.sort((a, b) => {
+      if (sortBy === "lowest") {
+        return a.price - b.price;
+      } else if (sortBy === "highest") {
+        return b.price - a.price;
+      }
+    })
   }
+
 
   return (
     <>
@@ -42,7 +52,7 @@ const Products = ({products, handleAddProduct}) => {
           }}
         
         />
-        <select>
+        <select onChange={handleSort}>
           <option value="">Sort</option>
           <option value="lowest">Lowest</option>
           <option value="highest">Highest</option>
@@ -68,7 +78,7 @@ const Products = ({products, handleAddProduct}) => {
               <h4>
                 {product.title.split(" ")[0]}
                 <br />
-                <small>{product.category}</small>
+                <small>{product.category.split(" ")[0]}</small>
               </h4>
               <h5>${product.price}</h5>
             </div>
@@ -76,7 +86,7 @@ const Products = ({products, handleAddProduct}) => {
               handleAddProduct(product);
             setTimeout(() => {
               handleClick();
-            }, 1000);
+            }, 0);
             }}>
              Buy Now
             </button>

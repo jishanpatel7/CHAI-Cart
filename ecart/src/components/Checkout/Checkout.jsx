@@ -5,7 +5,9 @@ import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "animate.css";
 import { useSnackbar } from "notistack";
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import { useNavigate } from "react-router-dom";
 const imageUrls = [
   "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png",
   "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_vrt_rev_92px_2x.png",
@@ -23,6 +25,7 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
   const [expireYear, setExpireYear] = useState("YYYY");
   const [cardTypeUrl, setCardTypeUrl] = useState("VISA");
 
+let navigate = useNavigate();
 
   const { enqueueSnackbar } = useSnackbar();
   const handleClick = () => {
@@ -80,13 +83,14 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
   };
   return (
     <>
+    <div className="main">
       <div className="cart-nav">
         <ArrowBackIcon
           style={{
             fontSize: "30px",
             marginTop: "10px",
           }}
-         
+         onClick={()=>navigate("/")}
         />
         <h1>Check out</h1>
       </div>
@@ -111,18 +115,15 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
             <img src={item.image} alt={item.title} className="cart-items-image" />
             </div>
             <div>
-            <button className="cart-items-remove" onClick={() => handleAddProduct(item)}>+</button>
-            <button className="cart-items-add" onClick={() => handleRemoveProduct(item)}>-</button>
+            <button className="cart-items-add" onClick={() => handleAddProduct(item)}>Add</button>
+            <button className="cart-items-remove" onClick={() => handleRemoveProduct(item)}>Remove</button>
             </div>
           </div>
 
         )
       })
     }
-     <div className="totalPrice">
-              Total
-              ${totalPrice.toFixed(2)}
-            </div>
+     
   </div>
 
 
@@ -138,6 +139,7 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
       </div>
       <div className="container1">
         <form id="form">
+        <Carousel showThumbs={false} axis ="horizontal">
           <div id="card">
             <h2 className="logo" alt="Card logo">
               {cardTypeUrl}
@@ -162,6 +164,9 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
               </div>
             </div>
           </div>
+        
+         
+          </Carousel>
 
           <div className="input-container mt">
             <h4>Enter card number</h4>
@@ -223,9 +228,33 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
               <input type="password" placeholder="CVV" required />
             </div>
           </div>
-
+          <div className="totalPrice">
+            <div className="total">
+            <h4>
+             Order
+            </h4>
+            <p>${totalPrice-7.68}</p>
+            </div>
+            <div className="delivery">
+          <h4>
+            Delivery
+          </h4>
+          <small>
+            ${7.68}
+          </small>
+            </div>
+            <div className="summary">
+            <h4>
+              Summary
+            </h4>
+            <p>
+              ${totalPrice}
+            </p>
+            </div>
+            </div>
           <button onClick={handleClick}>{`Pay Now`}</button>
         </form>
+      </div>
       </div>
     </>
   );
