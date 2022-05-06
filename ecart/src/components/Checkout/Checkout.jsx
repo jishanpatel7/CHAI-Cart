@@ -8,6 +8,7 @@ import { useSnackbar } from "notistack";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const imageUrls = [
   "https://logos-world.net/wp-content/uploads/2020/04/Visa-Logo.png",
   "https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_vrt_rev_92px_2x.png",
@@ -28,7 +29,8 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
 let navigate = useNavigate();
 
   const { enqueueSnackbar } = useSnackbar();
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
    if(creditCardNum === "**** **** **** ****" || cardType === "" || cardHolder === "Your Full Name" || expireMonth === "MM" || expireYear === "YYYY"){
       enqueueSnackbar("Please Fill all details", { variant: "error" });
     }
@@ -264,7 +266,11 @@ let navigate = useNavigate();
             </p>
             </div>
             </div>
-          <button onClick={handleClick}>{`Pay Now`}</button>
+         <Link to="/checkout">
+          <button className="checkout-button" onClick={handleClick}>
+            Buy Now
+          </button>
+        </Link>
         </form>
       </div>
       </div>
