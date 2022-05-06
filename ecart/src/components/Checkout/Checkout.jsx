@@ -111,6 +111,10 @@ let navigate = useNavigate();
            <p>{item.title.split(" ")[0]}</p>
             <small>{item.category}</small>
             <p>${item.price} <small>In Stock</small></p>
+            <small>Qty: {item.quantity}</small>
+            <br></br>
+            <small>Total: ${item.price * item.quantity}</small>
+            <br></br>
            </div>
             <div className="content">
             <img src={item.image} alt={item.title} className="cart-items-image" />
@@ -250,7 +254,13 @@ let navigate = useNavigate();
               Summary
             </h4>
             <p>
-              ${(totalPrice + 7.68).toFixed(2)}
+              {
+                totalPrice === 0 ? (
+                  <p>${0.00}</p>
+                ) : (
+                  <p>${(totalPrice + 7.68).toFixed(2)}</p>
+                )
+              }
             </p>
             </div>
             </div>
