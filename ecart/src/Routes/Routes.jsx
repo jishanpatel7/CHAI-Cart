@@ -7,6 +7,7 @@ const Routers = ({
   cartItems,
   handleAddProduct,
   handleRemoveProduct,
+  handleSort,
 }) => {
   return (
     <div>
@@ -18,6 +19,7 @@ const Routers = ({
               products={products}
               handleAddProduct={handleAddProduct}
               handleRemoveProduct={handleRemoveProduct}
+              handleSort={handleSort}
             />
           }
         />

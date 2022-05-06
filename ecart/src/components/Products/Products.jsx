@@ -5,7 +5,7 @@ import { Box, Image } from "@chakra-ui/react";
 import { BiSortAlt2 } from "react-icons/bi";
 import { FiFilter } from "react-icons/fi";
 import { useSnackbar } from "notistack";
-const Products = ({products, handleAddProduct}) => {
+const Products = ({products, handleAddProduct, handleSort}) => {
   const { enqueueSnackbar } = useSnackbar();
   const handleClick = () => {
     enqueueSnackbar(" Item added into Cart", {
@@ -14,19 +14,6 @@ const Products = ({products, handleAddProduct}) => {
   };
 
  
-  const handleSort = (e) => {
-    const sortBy = e.target.value;
-    const sortedProducts = [...products];
-    console.log(sortedProducts);
-    sortedProducts.sort((a, b) => {
-      if (sortBy === "lowest") {
-        return a.price - b.price;
-      } else if (sortBy === "highest") {
-        return b.price - a.price;
-      }
-    })
-  }
-
 
   return (
     <>

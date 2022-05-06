@@ -44,6 +44,19 @@ function App() {
   };
   
 
+  const handleSort = (e) => {
+
+    const sortBy = e.target.value;
+    const sortedProducts = [...products];
+    sortedProducts.sort((a, b) => {
+      if (sortBy === "lowest") {
+        return a.price - b.price;
+    } else if (sortBy === "highest") {
+        return b.price - a.price;
+    }
+    });
+    setProducts(sortedProducts);
+  }
   return (
     <>
     <div className="App">
@@ -53,6 +66,7 @@ function App() {
   cartItems={cartItems}
    handleAddProduct={handleAddProduct}
     handleRemoveProduct={handleRemoveProduct}
+    handleSort={handleSort}
  />
     </div>
     <SimpleBottomNavigation cartItems={cartItems}/>
