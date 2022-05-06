@@ -27,6 +27,9 @@ const Payments = ({ cartItems,handleAddProduct , handleRemoveProduct}) => {
   const [cardTypeUrl, setCardTypeUrl] = useState("VISA");
 
 let navigate = useNavigate();
+window.onload = function() {
+ navigate("/");
+}
 
   const { enqueueSnackbar } = useSnackbar();
   const handleClick = (e) => {
