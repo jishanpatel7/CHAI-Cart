@@ -25,7 +25,7 @@ const Products = ({products, handleAddProduct, handleSort}) => {
             marginBottom: "-20px",
           }}
         >
-          Featured Products
+          Featured 
         </h1>
         <p>{products.length} items listed</p>
        </div>

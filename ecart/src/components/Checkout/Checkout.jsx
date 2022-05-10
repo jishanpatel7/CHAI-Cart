@@ -40,6 +40,8 @@ window.onload = function() {
     else{
       enqueueSnackbar("Payment Successful", { variant: "success" });
     }
+  
+    navigate("/");
   };
  
 
@@ -269,11 +271,11 @@ window.onload = function() {
             </p>
             </div>
             </div>
-         <Link to="/checkout">
+        
           <button className="checkout-button" onClick={handleClick}>
             Buy Now
           </button>
-        </Link>
+       
         </form>
       </div>
       </div>

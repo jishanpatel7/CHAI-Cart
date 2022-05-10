@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     bottom: 0,
    zIndex: 100,
    boxShadow: "0px -1px 5px 0px rgba(0,0,0,0.5)",
+   marginLeft: "-0.5rem",
   },
 });
 const StyledBadge = styled(Badge)(({ theme }) => ({
